@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TTCModManager</name>
+    </assembly>
+    <members>
+        <member name="T:TTCModManager.Lib.Patching.IModPatch">
+            <summary>
+            It is recomended to make your patcher a class inheriting from this.
+            </summary>
+        </member>
+        <member name="M:TTCModManager.Lib.Patching.IModPatch.Patch">
+            <summary>
+            Place your harmony patching code here.
+            </summary>
+        </member>
+        <member name="T:TTCModManager.Lib.IO.ModResources">
+            <summary>
+            Static class for loading a mod's Unity resources.
+            </summary>
+        </member>
+        <member name="M:TTCModManager.Lib.IO.ModResources.LoadTextFile``1(System.String,System.Text.Encoding)">
+            <summary>
+            Loads a file using System.IO. If you want to load a Unity asset consider using <seealso cref="!:LoadAsset&lt;TMod&gt;(string)"/> instead.
+            </summary>
+            <typeparam name="TMod">The mod to load assets from.</typeparam>
+            <param name="path">The path to the file, relative to the Asset folder of the mod. Include extensions.</param>
+            <param name="encoding">What encoding does the file use? If this method returns random garbage data try adjusting this value.</param>
+            <returns>The contents of the found file, or null if no such file exists.</returns>
+        </member>
+        <member name="M:TTCModManager.Lib.IO.ModResources.SafeReadPlaintext(UnityEngine.TextAsset,System.String)">
+            <summary>
+            If file is null, returns fallback. Otherwise returns file.text.
+            <para>If the file is null this is either because it cannot be casted to <seealso cref="T:UnityEngine.TextAsset"/> or does not exist.</para>
+            </summary>
+            <param name="file">The file to read.</param>
+            <param name="fallback">The string to return if file is null. Defaults to an empty string.</param>
+            <returns>The safely read string.</returns>
+        </member>
+        <member name="T:TTCModManager.Lib.TTCMod">
+            <summary>
+            A mod that can be loaded by TTCModManager.
+            </summary>
+        </member>
+        <member name="M:TTCModManager.Lib.TTCMod.Preload">
+            <summary>
+            Place any Harmony patches here.
+            </summary>
+        </member>
+        <member name="M:TTCModManager.Lib.TTCMod.LogInfo(System.Object)">
+            <summary>
+            Prints info message to the BepInEx console.
+            </summary>
+            <param name="msg">The message to print.</param>
+        </member>
+        <member name="T:TTCModManager.Core.TTCModManagerMain">
+            <summary>
+            Core TTCMM BepInEx plugin.
+            </summary>
+        </member>
+        <member name="F:TTCModManager.Core.TTCModManagerMain.ModsDir">
+            <summary>
+            Directory where all mods should be stored.
+            </summary>
+        </member>
+        <member name="F:TTCModManager.Core.TTCModManagerMain.Mods">
+            <summary>
+            All mod classes loaded into To The Core.
+            </summary>
+        </member>
+        <member name="F:TTCModManager.Core.TTCModManagerMain.ModAssemblies">
+            <summary>
+            All mod assemblies` loaded into To The Core.
+            </summary>
+        </member>
+        <member name="F:TTCModManager.Core.TTCModManagerMain.CoreLogger">
+            <summary>
+            Use this to console log.
+            </summary>
+        </member>
+        <member name="T:TTCModManager.Core.TTCModManagerMain.ChangeDeathTextPatch">
+            <summary>
+            Harmony patch that changes the death text to "TTCModManager by TeamDoodz".
+            </summary>
+        </member>
+    </members>
+</doc>
