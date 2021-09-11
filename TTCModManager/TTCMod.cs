@@ -10,12 +10,12 @@ namespace TTCModManager.Lib {
 	public abstract class TTCMod {
 
 		/// <summary>
-		/// Use this to log messages to the BepInEx console.
+		/// Allows mods to interface with the BepInEx console.
 		/// </summary>
 		public TTCLogger Logger { get; set; }
 
 		/// <summary>
-		/// Place any Harmony patches here.
+		/// Called as the mod is loaded.
 		/// </summary>
 		public virtual void Preload() { }
 

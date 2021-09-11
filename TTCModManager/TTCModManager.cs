@@ -21,7 +21,7 @@ namespace TTCModManager.Core {
 	public class TTCModManagerMain : BaseUnityPlugin {
 
 		/// <summary>
-		/// What version of TTCMM are we using?
+		/// What version of TTCMM are we using.
 		/// </summary>
 		public const string TTCMMVersion = "0.1.0";
 
@@ -41,12 +41,12 @@ namespace TTCModManager.Core {
 		public static List<TTCMod> Mods = new List<TTCMod>();
 
 		/// <summary>
-		/// All mod assemblies` loaded into To The Core.
+		/// All mod assemblies loaded into To The Core.
 		/// </summary>
 		public static List<Assembly> ModAssemblies = new List<Assembly>();
 
 		/// <summary>
-		/// Use this to console log.
+		/// Don't use this is you can help it. Instead use <see cref="TTCMod.Logger"/>.
 		/// </summary>
 		public static ManualLogSource CoreLogger;
 
@@ -125,9 +125,6 @@ namespace TTCModManager.Core {
 
 		}
 
-		/// <summary>
-		/// Harmony patch that changes the death text to "TTCModManager by TeamDoodz".
-		/// </summary>
 		[HarmonyPatch(typeof(DeathSceneManager))]
 		[HarmonyPatch("Awake")]
 		private class ChangeDeathTextPatch {

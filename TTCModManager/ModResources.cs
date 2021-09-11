@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace TTCModManager.Lib.IO {
 	/// <summary>
-	/// Static class for loading a mod's Unity resources.
+	/// Static class for loading a mod's assets.
 	/// </summary>
 	public static class ModResources {
 
@@ -41,7 +41,7 @@ namespace TTCModManager.Lib.IO {
 
 		/// <summary>
 		/// If file is null, returns fallback. Otherwise returns file.text.
-		/// <para>If the file is null this is either because it cannot be casted to <seealso cref="TextAsset"/> or does not exist.</para>
+		/// <para>If the file is null this is either because it cannot be casted to <see cref="TextAsset"/> or does not exist.</para>
 		/// </summary>
 		/// <param name="file">The file to read.</param>
 		/// <param name="fallback">The string to return if file is null. Defaults to an empty string.</param>
