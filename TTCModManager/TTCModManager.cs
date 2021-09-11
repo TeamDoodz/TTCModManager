@@ -28,12 +28,12 @@ namespace TTCModManager.Core {
 		/// <summary>
 		/// All mod classes loaded into To The Core.
 		/// </summary>
-		public static List<Type> Mods;
+		public static List<Type> Mods = new List<Type>();
 
 		/// <summary>
 		/// All mod assemblies` loaded into To The Core.
 		/// </summary>
-		public static List<Assembly> ModAssemblies;
+		public static List<Assembly> ModAssemblies = new List<Assembly>();
 
 		/// <summary>
 		/// Use this to console log.
