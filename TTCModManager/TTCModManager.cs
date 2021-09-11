@@ -28,7 +28,7 @@ namespace TTCModManager.Core {
 		/// <summary>
 		/// All mod classes loaded into To The Core.
 		/// </summary>
-		public static List<TTCMod> Mods;
+		public static List<Type> Mods;
 
 		/// <summary>
 		/// All mod assemblies` loaded into To The Core.
@@ -76,6 +76,8 @@ namespace TTCModManager.Core {
 
 					foreach (Type type in DLL.GetExportedTypes()) {
 						if (type.IsSubclassOf(typeof(TTCMod))) {
+							Mods.Add(type);
+							ModAssemblies.Add(DLL);
 							var c = Activator.CreateInstance(type);
 							type.InvokeMember("Preload", BindingFlags.InvokeMethod, null, c, new object[] { });
 						}
