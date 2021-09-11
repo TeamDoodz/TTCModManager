@@ -78,7 +78,11 @@ namespace TTCModManager.Core {
 						if (type.IsSubclassOf(typeof(TTCMod))) {
 							Mods.Add(type);
 							ModAssemblies.Add(DLL);
+
 							var c = Activator.CreateInstance(type);
+
+							type.GetProperty("Logger").SetValue(c, new TTCLogger(modID), null);
+
 							type.InvokeMember("Preload", BindingFlags.InvokeMethod, null, c, new object[] { });
 						}
 					}
