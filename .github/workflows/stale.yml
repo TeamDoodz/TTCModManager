@@ -25,3 +25,4 @@ jobs:
         stale-pr-message: 'This pull request has been marked as stale due to no recent activity. Although stale posts are lower priority, they will not be removed.'
         stale-issue-label: 'stale'
         stale-pr-label: 'stale'
+        days-before-close: -1
