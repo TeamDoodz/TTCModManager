@@ -21,6 +21,11 @@ namespace TTCModManager.Core {
 	public class TTCModManagerMain : BaseUnityPlugin {
 
 		/// <summary>
+		/// There should only be one instance of TTCModManagerMain. Use this field to access it.
+		/// </summary>
+		public static TTCModManagerMain instance;
+
+		/// <summary>
 		/// Directory where all mods should be stored.
 		/// </summary>
 		public static string ModsDir;
@@ -43,6 +48,12 @@ namespace TTCModManager.Core {
 		private ConfigEntry<bool> replaceDeathText;
 
 		private void Awake() {
+			if(instance == null) {
+				instance = this;
+			} else {
+				Logger.LogWarning("Instance != null! This is likely because there are two instances of TTCModManagerMain, which shouldn't happen. (Is a mod causing this?)");
+				Destroy(this);
+			}
 			Logger.LogInfo("TTCModManager Loaded");
 
 			CoreLogger = Logger;
