@@ -16,9 +16,14 @@ namespace TTCModManager.Core {
 	/// <summary>
 	/// Core TTCMM BepInEx plugin.
 	/// </summary>
-	[BepInPlugin("io.github.TeamDoodz.TTCModManager", "TTCModManager", "0.0.0")]
+	[BepInPlugin("io.github.TeamDoodz.TTCModManager", "TTCModManager", TTCMMVersion)]
 	[BepInProcess("To The Core.exe")]
 	public class TTCModManagerMain : BaseUnityPlugin {
+
+		/// <summary>
+		/// What version of TTCMM are we using?
+		/// </summary>
+		public const string TTCMMVersion = "0.1.0";
 
 		/// <summary>
 		/// There should only be one instance of TTCModManagerMain. Use this field to access it.
@@ -33,7 +38,7 @@ namespace TTCModManager.Core {
 		/// <summary>
 		/// All mod classes loaded into To The Core.
 		/// </summary>
-		public static List<Type> Mods = new List<Type>();
+		public static List<TTCMod> Mods = new List<TTCMod>();
 
 		/// <summary>
 		/// All mod assemblies` loaded into To The Core.
@@ -76,7 +81,7 @@ namespace TTCModManager.Core {
 			string[] modFolders = Directory.GetDirectories(ModsDir);
 			Logger.LogInfo($"Mods found: {modFolders.Length}");
 
-			Logger.LogInfo("----PRELOAD PHASE----");
+			Logger.LogMessage("----PRELOAD PHASE----");
 
 			foreach(var modDir in modFolders) {
 				string modID = Regex.Replace(modDir, @"[\d\D]+[/\\]", "");
@@ -87,10 +92,10 @@ namespace TTCModManager.Core {
 
 					foreach (Type type in DLL.GetExportedTypes()) {
 						if (type.IsSubclassOf(typeof(TTCMod))) {
-							Mods.Add(type);
 							ModAssemblies.Add(DLL);
 
 							var c = Activator.CreateInstance(type);
+							Mods.Add((TTCMod)c);
 
 							type.GetProperty("Logger").SetValue(c, new TTCLogger(modID), null);
 
@@ -103,7 +108,21 @@ namespace TTCModManager.Core {
 					Logger.LogWarning($"There was an error loading {modID}. It will be skipped.");
 				}
 			}
-			
+
+			Logger.LogMessage("----POSTLOAD PHASE----");
+
+			foreach(var mod in Mods) {
+				string modID = mod.GetType().Name;
+				Logger.LogInfo($"Attempting to post-load {modID}");
+
+				try {
+					mod.PostLoad();
+				} catch (Exception e) {
+					Logger.LogWarning(e.ToString());
+					Logger.LogWarning($"There was an error post-loading {modID}.");
+				}
+			}
+
 		}
 
 		/// <summary>

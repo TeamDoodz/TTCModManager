@@ -17,7 +17,12 @@ namespace TTCModManager.Lib {
 		/// <summary>
 		/// Place any Harmony patches here.
 		/// </summary>
-		public abstract void Preload();
+		public virtual void Preload() { }
+
+		/// <summary>
+		/// Called after all mods have been loaded.
+		/// </summary>
+		public virtual void PostLoad() { }
 
 	}
 }
