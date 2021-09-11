@@ -82,6 +82,7 @@ namespace TTCModManager.Core {
 							type.InvokeMember("Preload", BindingFlags.InvokeMethod, null, c, new object[] { });
 						}
 					}
+					Logger.LogInfo($"{modID} successfully loaded");
 				} catch (Exception e) {
 					Logger.LogWarning(e.ToString());
 					Logger.LogWarning($"There was an error loading {modID}. It will be skipped.");
