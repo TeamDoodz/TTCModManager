@@ -12,4 +12,8 @@ To actually compile it, open `TTCModManager.sln` in Visual Studio 2019 (Other ve
 
 <b>An automated method of doing this is planned.</b>
 
-First make sure BepInEx is installed in your TTC directory. Run TTC once to make sure BepInEx configured correctly. Download the [BepInEx Configuration Manager](https://github.com/BepInEx/BepInEx.ConfigurationManager) and follow its installation instructions. Copy-paste `TTCModManager.dll` and `TTCModManager.xml` into \<TTC dir>/BepInEx/plugins/TTCModManager. To confirm TTCMM was succesfully installed you can view the BepInEx console window, it should say "TTCModManager Loaded".
+First make sure BepInEx is installed in your TTC directory. Run TTC once to make sure BepInEx configured correctly. Download the [BepInEx Configuration Manager](https://github.com/BepInEx/BepInEx.ConfigurationManager) and follow its installation instructions. Copy-paste `TTCModManager.dll` and `TTCModManager.xml` into \<TTC dir>/BepInEx/plugins/TTCModManager.
+
+Finally, create a folder in your TTC directory called "Mods", and in that "TTCModManager". That directory is where all mods will be installed.
+
+To confirm TTCMM was succesfully installed you can view the BepInEx console window, it should say "TTCModManager Loaded". Press F1 in-game to view config settings.
