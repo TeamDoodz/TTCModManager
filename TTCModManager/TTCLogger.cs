@@ -55,7 +55,7 @@ namespace TTCModManager.Lib {
 		}
 
 		/// <summary>
-		/// Logs efatal to the console.
+		/// Logs fatal to the console.
 		/// </summary>
 		/// <param name="msg">The message to log.</param>
 		public void LogFatal(object msg) {
