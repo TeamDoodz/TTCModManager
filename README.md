@@ -1,4 +1,6 @@
 # TTCModManager
+![GitHub](https://img.shields.io/github/license/TeamDoodz/TTCModManager)
+[![PRs Welcome](http://img.shields.io/badge/PRs-welcome-brightgreen)](http://makeapullrequest.com)
 
 TTCModManager (or TTCMM, To The Core Mod Manager) is a BepInEx plugin that allows mods to be loaded into Something Extra's [To The Core](https://somethingextra.itch.io/to-the-cores).
 
