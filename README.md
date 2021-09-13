@@ -6,7 +6,7 @@ TTCModManager (or TTCMM, To The Core Mod Manager) is a BepInEx plugin that allow
 
 ## Compiling
 
-To setup compiling, clone the repository into an empty directory. Next, install [BepInEx 5.4.15](https://github.com/BepInEx/BepInEx/releases/tag/v5.4.15) into your TTC directory. In the root directory of the repo create a folder called `Libs` and copy `0Harmony.dll`, `BepInEx.dll`, `BepInEx.Harmony.dll` (from \<BepInEx dir>/core), `Assembly-CSharp.dll`, `Unity.TextMeshPro.dll`, `UnityEngine.CoreModule.dll`, `UnityEngine.Physics2DModule.dll` and `UnityEngine.dll` (from \<TTC dir>/To The Core_Data/Managed).
+To setup compiling, clone the repository into an empty directory. Next, install [BepInEx 5.4.15](https://github.com/BepInEx/BepInEx/releases/tag/v5.4.15) into your TTC directory. In the root directory of the repo create a folder called `Libs` and copy `0Harmony.dll`, `BepInEx.dll`, `BepInEx.Harmony.dll` (from \<BepInEx dir>/core), `Assembly-CSharp.dll`, `Unity.TextMeshPro.dll`, `UnityEngine.CoreModule.dll`, `UnityEngine.ImageConversionModule.dll` `UnityEngine.Physics2DModule.dll` and `UnityEngine.dll` (from \<TTC dir>/To The Core_Data/Managed).
 
 To actually compile it, open `TTCModManager.sln` in Visual Studio 2019 (Other versions may work, but don't count on it), right-click the solution in the Solution Explorer window, and click "Build Solution".
 

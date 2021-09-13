@@ -11,6 +11,16 @@ namespace TTCModManager.Lib.IO {
 	/// </summary>
 	public static class ModResources {
 
+		/// <summary>
+		/// Converts a path relative to a mod's assets forlder to an abesolute path.
+		/// </summary>
+		/// <typeparam name="TMod">The mod to convert.</typeparam>
+		/// <param name="inputPath">The path specified.</param>
+		/// <returns></returns>
+		public static string ModAssetPath<TMod>(string inputPath) {
+			return TTCModManagerMain.ModsDir + "\\" + typeof(TMod).Name + "\\Assets\\" + Regex.Replace(inputPath, "/", "\\");
+		}
+
 		//TODO: Fix this (use WWW instead of Resources)
 		/*
 		/// <summary>
@@ -35,8 +45,7 @@ namespace TTCModManager.Lib.IO {
 		/// <param name="encoding">What encoding does the file use? If this method returns random garbage data try adjusting this value.</param>
 		/// <returns>The contents of the found file, or null if no such file exists.</returns>
 		public static string LoadTextFile<TMod>(string path, Encoding encoding) {
-			string data = TTCModManagerMain.ModsDir + "\\" + typeof(TMod).Name + "\\Assets\\" + Regex.Replace(path, "/", "\\");
-			return File.ReadAllText(data, encoding);
+			return File.ReadAllText(ModAssetPath<TMod>(path), encoding);
 		}
 
 		/// <summary>
@@ -49,6 +58,48 @@ namespace TTCModManager.Lib.IO {
 		public static string SafeReadPlaintext(this TextAsset file, string fallback = "") {
 			if (file == null) return fallback;
 			return file.text;
+		}
+
+		/// <summary>
+		/// Loads a PNG/JPG file from the mod's Assets folder.
+		/// </summary>
+		/// <param name="path">The path to the texture, relative to the mod's Assets folder.</param>
+		/// <returns>A <see cref="Texture2D"/> representing the texture data.</returns>
+		// from https://forum.unity.com/threads/generating-sprites-dynamically-from-png-or-jpeg-files-in-c.343735/
+		public static Texture2D LoadTexture<TMod>(string path) {
+
+			// Load a PNG or JPG file from disk to a Texture2D
+			// Returns null if load fails
+
+			Texture2D Tex2D;
+			byte[] FileData;
+
+			if (File.Exists(ModAssetPath<TMod>(path))) {
+				FileData = File.ReadAllBytes(ModAssetPath<TMod>(path));
+				Tex2D = new Texture2D(2, 2);           // Create new "empty" texture
+				if (Tex2D.LoadImage(FileData))           // Load the imagedata into the texture (size is set automatically)
+					return Tex2D;                 // If data = readable -> return texture
+			}
+			return null;                     // Return null if load failed
+		}
+
+		/// <summary>
+		/// Loads a PNG/JPG file from the mod's Assets folder, as a <see cref="Sprite"/>.
+		/// </summary>
+		/// <param name="path">The path to the texture, relative to the mod's Assets folder.</param>
+		/// <param name="PixelsPerUnit">The pixels per unit of the sprite. In TTC this <i>should</i> be 16f.</param>
+		/// <returns>A <see cref="Sprite"/> representing the texture data.</returns>
+		// from https://forum.unity.com/threads/generating-sprites-dynamically-from-png-or-jpeg-files-in-c.343735/
+		public static Sprite LoadNewSprite<TMod>(string path, float PixelsPerUnit = 16f) {
+
+			// Load a PNG or JPG image from disk to a Texture2D, assign this texture to a new sprite and return its reference
+
+			Sprite NewSprite;
+			//TTCModManagerMain.CoreLogger.LogInfo(ModAssetPath<TMod>(path));
+			Texture2D SpriteTexture = LoadTexture<TMod>(path);
+			NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0), PixelsPerUnit);
+
+			return NewSprite;
 		}
 
 	}
