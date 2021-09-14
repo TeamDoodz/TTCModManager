@@ -27,6 +27,9 @@
     <Reference Include="UnityEngine">
       <HintPath>..\Libs\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>..\Libs\UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\Libs\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
@@ -35,6 +38,12 @@
     </Reference>
     <Reference Include="UnityEngine.Physics2DModule">
       <HintPath>..\Libs\UnityEngine.Physics2DModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+      <HintPath>..\Libs\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>..\Libs\UnityEngine.UnityWebRequestModule.dll</HintPath>
     </Reference>
   </ItemGroup>
 

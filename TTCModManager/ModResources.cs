@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using TTCModManager.Core;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace TTCModManager.Lib.IO {
 	/// <summary>
@@ -102,5 +104,40 @@ namespace TTCModManager.Lib.IO {
 			return NewSprite;
 		}
 
+		//TODO: finish this
+		/*
+		/// <summary>
+		/// Loads an audio file from the mod's Assets folder, as an <see cref="AudioClip"/>.
+		/// </summary>
+		/// <param name="path">The path to the clip, relative to the mod's Assets folder.</param>
+		/// <param name="type">The type of audio clip to look for.</param>
+		/// <param name="error">If something goes wrong while trying to get the clip, the error message will be stored in this parameter.</param>
+		/// <returns>The found audio clip.</returns>
+		public static AudioClip LoadAudioClip<TMod>(string path, AudioType type, out string error) {
+			//https://docs.unity3d.com/ScriptReference/Networking.UnityWebRequestMultimedia.GetAudioClip.html
+
+			string Error = "No error ;-)";
+			AudioClip outp = null;
+
+			IEnumerator GetClip() {
+				using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip("file:///" + ModAssetPath<TMod>(path), type)) {
+					yield return www.SendWebRequest();
+
+					outp = DownloadHandlerAudioClip.GetContent(www);
+
+					if (www.result != UnityWebRequest.Result.Success || outp == null) {
+						TTCModManagerMain.CoreLogger.LogWarning("Failed to get audio file: " + ModAssetPath<TMod>(path));
+						Error = www.error;
+					}
+				}
+			}
+
+			TTCModManagerMain.instance.StartCoroutine(GetClip());
+
+			error = Error;
+			if (outp == null) throw new System.Exception("Something went wrong getting audio file " + path + ". See the error parameter for more information.");
+			return outp;
+		}
+		*/
 	}
 }
