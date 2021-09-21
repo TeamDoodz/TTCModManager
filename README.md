@@ -1,4 +1,4 @@
-# TTCModManager
+# <img src= "https://github.com/TeamDoodz/TTCModManager/blob/master/TTCModManager/logo.png?raw=true" width="30" height="30"/> TTCModManager
 ![GitHub](https://img.shields.io/github/license/TeamDoodz/TTCModManager)
 [![PRs Welcome](http://img.shields.io/badge/PRs-welcome-brightgreen)](http://makeapullrequest.com)
 ![Lines of code](https://img.shields.io/tokei/lines/github/TeamDoodz/TTCModManager)
